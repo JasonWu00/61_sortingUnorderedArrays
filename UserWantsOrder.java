@@ -5,10 +5,10 @@
 import java.util.ArrayList;  // shortcut
 
 public class UserWantsOrder {
-    
+
     public static void main(String[] commandLine) {
         System.out.println();
-        
+
         // create the data destined for OL_iAS
         ArrayList<Integer> chaos =
            new ArrayList<Integer>();
@@ -18,10 +18,11 @@ public class UserWantsOrder {
         chaos.add( 116);
         chaos.add( 114);
         chaos.add( 112);  // second-lowest is last
+        chaos.add(1); //lowest at end now
         System.out.println(
             "unordered data: " + chaos
           + System.lineSeparator());
-          
+
         System.out.println(
             "constructed: "
           + new OrderedList_inArraySlots( chaos)

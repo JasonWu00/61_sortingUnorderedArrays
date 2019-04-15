@@ -12,29 +12,41 @@ public class OrderedList_inArraySlots
 
     private ArrayList<Integer> list_iAS;
 
-    /** 
+    /**
       construct order from an unordered ArrayList
      */
-    public OrderedList_inArraySlots
-            ( ArrayList<Integer> unordered) {
-        this();  // improve, for optional extra education
+    public OrderedList_inArraySlots ( ArrayList<Integer> unordered) {
+        //this();  // improve, for optional extra education
 
-        // test champIndex, for incremental development
-        int nextLargerAt = champIndex( unordered);
-        System.out.println( 
-            "smallest element is at index " + nextLargerAt 
-          + " and has the value " + unordered.get( nextLargerAt));
+        //test champIndex, for incremental development
+        ArrayList<Integer> dummy = unordered;
+        ArrayList<Integer> ordered = new ArrayList<Integer>();
+          for (int index = 0; index < dummy.size(); index++){
+            int newElement = dummy.get(champIndex(dummy));
+            ordered.add(newElement);
+            Integer max = Integer.MAX_VALUE;
+            dummy.set(champIndex(dummy), max);
+      }
+      list_iAS = ordered;
     }
 
 
-    /** 
+    /**
       helper function for constructor
-      @return the index of the smallest of the elements,
+      return the index of the smallest of the elements,
               ignoring null elements, and
               using the classic reigning champ algorithm
      */
      private int champIndex( ArrayList<Integer> challengers) {
-        return challengers.size() - 1;  // replace this line
+       Integer lowestElement = Integer.MAX_VALUE;
+       int output = 0;
+       for (int index = 0; index < challengers.size(); index++) {
+         if (challengers.get(index) < lowestElement) {
+           lowestElement = challengers.get(index);
+           output = index;
+         }
+       }
+        return output;  // replace this line
      }
 
 
